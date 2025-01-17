@@ -1,0 +1,148 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+    <body>
+        <div class="row mb-4">
+            <div class="col offset-3">
+                <div class="col-12">
+                    <h1>
+                        <%= oneList.title %>
+                    </h1>
+                </div>
+
+                <div class="col-4">
+                    <img src="<%=oneList.image.url %>" alt="listing-imgage" class="show-route-image">
+                    <ul>
+                        <p class="card-text">
+                            <li>Owned By : <%= oneList.owner.username %>
+                            </li>
+                        </p>
+                        <p class="card-text">
+                            <li>
+                                <%= oneList.description %>
+                            </li>
+                        </p>
+                        <p class="card-text">
+                            <li>
+                                <%= oneList.location %>
+                            </li>
+                        </p>
+                        <p class="card-text">
+                            <li>
+                                <%= oneList.country %>
+                            </li>
+                        </p>
+                        <p class="card-text">
+                            <li>&#x20B9; <%= oneList.price %>/night</li>
+                        </p>
+                    </ul>
+                    <% if(currUser && oneList.owner._id.equals(currUser._id)) { %>
+                        <div class="btns mt-3">
+                            <form method="GET" action="/listings/<%= oneList._id %>/edit">
+                                <button class="btn edit-btn listing-btn">Edit</button>
+                            </form>
+                            <form method="POST" action="/listings/<%= oneList._id %>?_method=DELETE">
+                                <button class="btn delete-btn">Delete</button>
+                            </form>
+                        </div>
+                        <% } %>
+
+
+                </div>
+                <hr>
+                <div>
+                    <% if(currUser) {%>
+                        <h3>leave a comment</h3>
+                        <form action="/listings/<%= oneList.id %>/reviews" method="POST">
+                            <div class="m-2">
+                                <label for="rating">please give rating</label>
+
+                                <fieldset class="starability-slot">
+                                    <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]"
+                                        value="1" checked aria-label="No rating." />
+
+                                    <input type="radio" id="rate1" name="review[rating]" value="1" />
+                                    <label for="rate1">1 star.</label>
+
+                                    <input type="radio" id="rate2" name="review[rating]" value="2" />
+                                    <label for="rate2">2 stars.</label>
+
+                                    <input type="radio" id="rate3" name="review[rating]" value="3" />
+                                    <label for="rate3">3 stars.</label>
+
+                                    <input type="radio" id="rate4" name="review[rating]" value="4" />
+                                    <label for="rate4">4 stars.</label>
+
+                                    <input type="radio" id="rate5" name="review[rating]" value="5" />
+                                    <label for="rate5">5 stars.</label>
+
+                                    <span class="starability-focus-ring"></span>
+                                </fieldset>
+                            </div>
+
+                            <div>
+                                <label for="comment">comment</label>
+                                <textarea name="review[comment]" id="comment" class="form-control" cols="30"
+                                    rows="5"></textarea>
+                                <!-- <div class="invalid-feedback">please add some comment</div> -->
+                            </div>
+                            <button class="btn btn-outline-dark m-2">submit</button>
+                        </form>
+                        <% } %>
+                </div>
+                <% if(oneList.reviewList.length>0){ %>
+                    <hr>
+
+                    <div class="showReview">
+
+
+
+                        <h4>all reviews</h4>
+                        <div class="row ms-3">
+                            <% for(let review of oneList.reviewList) { %>
+                                <div class="card col-5 m-4 border-black">
+                                    <div class="card-body">
+                                        <div class="title">
+                                            <b>@<%=review.author.username %></b>
+                                            <p class="starability-result" data-rating="<%= review.rating %>">
+                                            </p>
+                                        </div>
+                                        <div class="text">
+                                            <%= review.comment %>
+                                        </div>
+
+
+
+                                    </div>
+
+                                    <form action="/listings/<%= oneList.id %>/reviews/<%= review._id %>?_method=DELETE"
+                                        method="POST">
+                                        <button class="btn btn-sm btn-dark mb-2">Delete</button>
+                                    </form>
+
+                                </div>
+
+
+
+                                <% } %>
+                        </div>
+                        <% } %>
+                    </div>
+                    <div class="row mb-10 offset-4">
+                        <h3>where you'll be</h3>
+                        <div id="map" style="height: 350px; width: 700px;"></div>
+                    </div>
+            </div>
+
+        </div>
+        <script>
+
+//    let lat = 20.5937;
+//    let lon = 78.9629;
+     
+        let lat =Number("<%=oneList.geometry.coordinates[0]%>");
+       let lon = Number("<%=oneList.geometry.coordinates[1]%>");
+       let place = "<%=oneList.location%>";
+        </script>
+    </body>
+
+    </html>

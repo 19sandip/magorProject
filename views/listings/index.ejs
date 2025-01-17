@@ -1,0 +1,277 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<style>
+  #filters{
+    display: flex;
+    margin-top: 20px;
+    overflow: auto;
+    align-items: center;
+
+  }
+  
+.no-scrollbar::-webkit-scrollbar { /* Chrome, Safari */
+    display: none;
+}
+  .filter{
+   margin-right: 1.6rem;
+   text-align: center;
+      opacity: .7;
+  }
+  .filter:hover{
+   text-decoration: underline;
+   text-underline-offset: 12px;
+   cursor: pointer;
+ opacity: 1;
+  }
+  .icon .fa-solid{
+    font-size: 1.4rem;
+    margin-bottom: .7rem;
+  }
+
+  .filterText{
+   font-size: .9rem;
+   font-weight: 300;
+  }
+  .tax_info{
+    display: none;
+  }
+
+  .filtersAndTaxSwitch{
+    display: flex;
+    align-items: center;
+  
+     background-color: white;
+     z-index: 8;
+  }
+
+  .toggle_switch{
+    border: 1px solid black;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    width: 30em;
+    z-index: 9;
+
+  }
+
+  
+
+</style>
+<body> <div class="filtersAndTaxSwitch">
+<div id="filters" class="collapse no-scrollbar">
+
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-fire"></i>
+    </div>
+    <p class="filterText">Trending</p>
+  </div>
+
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-bed"></i>
+    </div>
+    <p class="filterText">Rooms</p>
+  </div>
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-fire"></i>
+    </div>
+    <p class="filterText">Trending</p>
+  </div>
+
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-bed"></i>
+    </div>
+    <p class="filterText">Rooms</p>
+  </div>
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-fire"></i>
+    </div>
+    <p class="filterText">Trending</p>
+  </div>
+
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-bed"></i>
+    </div>
+    <p class="filterText">Rooms</p>
+  </div>
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-fire"></i>
+    </div>
+    <p class="filterText">Trending</p>
+  </div>
+
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-bed"></i>
+    </div>
+    <p class="filterText">Rooms</p>
+  </div>
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-fire"></i>
+    </div>
+    <p class="filterText">Trending</p>
+  </div>
+
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-bed"></i>
+    </div>
+    <p class="filterText">Rooms</p>
+  </div>
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-fire"></i>
+    </div>
+    <p class="filterText">Trending</p>
+  </div>
+
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-bed"></i>
+    </div>
+    <p class="filterText">Rooms</p>
+  </div>
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-fire"></i>
+    </div>
+    <p class="filterText">Trending</p>
+  </div>
+
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-bed"></i>
+    </div>
+    <p class="filterText">Rooms</p>
+  </div>
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-fire"></i>
+    </div>
+    <p class="filterText">Trending</p>
+  </div>
+
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-bed"></i>
+    </div>
+    <p class="filterText">Rooms</p>
+  </div>
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-fire"></i>
+    </div>
+    <p class="filterText">Trending</p>
+  </div>
+
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-bed"></i>
+    </div>
+    <p class="filterText">Rooms</p>
+  </div>
+  
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-fire"></i>
+    </div>
+    <p class="filterText">Trending</p>
+  </div>
+
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-person-swimming"></i>
+    </div>
+    <p class="filterText">Arctics</p>
+  </div>
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-mountain"></i>
+    </div>
+    <p class="filterText">Mountain rooms</p>
+  </div>
+
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-person-swimming"></i>
+    </div>
+    <p class="filterText">Arctics</p>
+  </div>
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-mountain"></i>
+    </div>
+    <p class="filterText">Mountain rooms</p>
+  </div>
+
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-person-swimming"></i>
+    </div>
+    <p class="filterText">Arctics</p>
+  </div>
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-mountain"></i>
+    </div>
+    <p class="filterText">Mountain rooms</p>
+  </div>
+
+  <div class="filter">
+    <div class="icon">
+      <i class="fa-solid fa-person-swimming"></i>
+    </div>
+    <p class="filterText">Arctics</p>
+  </div>
+
+</div>
+
+  <div class="toggle_switch">
+    <div class="form-check-reverse form-switch">
+      <label class="form-check-label" for="flexSwitchCheckDefault">total after taxes</label>
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+    </div>
+  </div>
+ </div>
+ 
+
+<div class="row row-cols-lg-3 row-cols-xl-4 row-cols-md-2 row-cols-sm-1">
+  <% for(let list of allListings) {%>
+    <a href="/listings/<%= list._id %>" class="cards-link">
+          <div class="card linsting_card" style="width: 20rem;">
+            <img src="<%= list.image.url%>" class="card-img-top" alt="listing-image">
+            <div class="card-img-overlay"></div>
+            <div class="card-body">
+              <p class="card-text">
+              <b> <%= list.title %> <br></b>
+                  &#x20B9; <%= list.price%>/night
+                 &nbsp; <i class="tax_info">+18% GST</i>
+              </p>
+            </div>
+          </div>
+</a>
+            <% }  %> 
+</div>
+
+<script>
+  let filterSwitch = document.getElementById("flexSwitchCheckDefault");
+  let taxes_info = document.querySelectorAll(".tax_info");
+  filterSwitch.addEventListener("click", ()=>{
+   for(info of taxes_info) {
+    if(info.style.display != "inline") {
+      info.style.display = "inline";
+    } else{
+      info.style.display = "none"
+    }
+   }
+  })
+</script>
+</body>
+</html>
