@@ -82,11 +82,8 @@ const convertToGeoJSON = (nominatimData) => {
 };
 
 const searchListings = async (req, res) =>{
-  console.log("searching listings");
     let listings = await Listing.find();
-
 const searchQuery = req.query.search|| "";
-console.log("searchQuery", searchQuery);
 
   const filteredListings = listings.filter(listing =>
     listing.title.toLowerCase().includes(searchQuery.toLowerCase()) ||

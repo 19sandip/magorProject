@@ -3,7 +3,7 @@
   #filters{
     display: flex;
     margin-top: 20px;
-    overflow: auto;
+    overflow-x: auto;
     align-items: center;
 
   }
@@ -12,7 +12,7 @@
     display: none;
 }
   .filter{
-   margin-right: 1.6rem;
+   margin-right: 15px;
    text-align: center;
       opacity: .7;
   }
@@ -37,6 +37,7 @@
 
   .filtersAndTaxSwitch{
     display: flex;
+    justify-content: space-between;
     align-items: center;
      background-color: white;
     
@@ -48,7 +49,7 @@
     display: flex;
     align-items: center;
     padding: 1rem;
-    width: 30em;
+    width: 15rem;
     
 
   }
@@ -182,85 +183,10 @@
     </div>
     <p class="filterText">Rooms</p>
   </div>
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-fire"></i>
-    </div>
-    <p class="filterText">Trending</p>
-  </div>
-
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-bed"></i>
-    </div>
-    <p class="filterText">Rooms</p>
-  </div>
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-fire"></i>
-    </div>
-    <p class="filterText">Trending</p>
-  </div>
-
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-bed"></i>
-    </div>
-    <p class="filterText">Rooms</p>
-  </div>
+ 
   
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-fire"></i>
-    </div>
-    <p class="filterText">Trending</p>
-  </div>
+  
 
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-person-swimming"></i>
-    </div>
-    <p class="filterText">Arctics</p>
-  </div>
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-mountain"></i>
-    </div>
-    <p class="filterText">Mountain rooms</p>
-  </div>
-
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-person-swimming"></i>
-    </div>
-    <p class="filterText">Arctics</p>
-  </div>
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-mountain"></i>
-    </div>
-    <p class="filterText">Mountain rooms</p>
-  </div>
-
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-person-swimming"></i>
-    </div>
-    <p class="filterText">Arctics</p>
-  </div>
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-mountain"></i>
-    </div>
-    <p class="filterText">Mountain rooms</p>
-  </div>
-
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-person-swimming"></i>
-    </div>
-    <p class="filterText">Arctics</p>
-  </div>
 
 </div>
 
@@ -282,7 +208,7 @@
             </div>
         </div>
 
-<div class="row row-cols-lg-3 row-cols-xl-4 row-cols-md-2 row-cols-sm-1">
+<div class="row row-cols-lg-3 row-cols-xl-3 row-cols-md-2 row-cols-sm-1">
   <% if(allListings.length == 0) { %>
     <div class="col-12 text-center" style="width: 100%; margin-top: 10rem; opacity: .8;">
       <h2 class="text-center">No listings found</h2>
@@ -291,7 +217,7 @@
 
   <% for(let list of allListings) {%>
     <a href="/listings/<%= list._id %>" class="cards-link">
-          <div class="card linsting_card" style="width: 20rem;">
+          <div class="card linsting_card" style="width: 26rem;">
             <img src="<%= list.image.url%>" class="card-img-top" alt="listing-image">
             <div class="card-img-overlay"></div>
             <div class="card-body">
