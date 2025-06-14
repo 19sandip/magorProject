@@ -1,53 +1,22 @@
-   <style>
-    .searchBtn{
-      background-color: #fe424d;
-      color: #fff;
-      border: 1px solid white;
-      border-radius: 1.5rem;
-    }
-    .searchBtn:hover{
-      background-color: #fe424d;
-      color: #fff;
-      border: 1px solid white;
-
-    }
-    .searchIcon{
-      display: inline;
-      margin-right: .5rem;
-    }
-
-    .searchInput{
-      border-radius: 1.5rem;
-      padding: .4rem 1rem .4rem 3rem;
-    }
-   </style>
+  
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
+      <a class="navbar-brand" href="/"><i class="fa-solid fa-compass"></i></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <!-- <a class="nav-link active" aria-current="page" href="/listings">Home</a> -->
-          <a class="nav-link" href="/listings">Explore</a>
+          <a class="nav-link" href="/">Explore</a>
         
         </div>
-        <div class="searchBar navbar-nav ms-auto">
-          <nav class="navbar navbar-light bg-light">
-            <div class="container-fluid">
-              <form class="d-flex">
-                <input class="form-control me-2 searchInput" type="search" placeholder="Search destination">
-                <button class="btn btn-outline-success searchBtn" type="submit"> <i class="fa-solid fa-magnifying-glass searchIcon"></i>Search</button>
-              </form>
-            </div>
-          </nav>
-        </div>
+       
         <div class="navbar-nav ms-auto">
             <a class="nav-link" href="/listings/addnew">Airbnb your home</a>
          <% if(!currUser){ %>
              <a class="nav-link active" aria-current="page" href="/user/signup"><b>signup</b></a>
-          <a class="nav-link" href="/user/login"><b>login</b> </a>
+            <a class="nav-link" href="/user/login"><b>login</b> </a>
          <%  } %>
 
          <% if(currUser){ %> 

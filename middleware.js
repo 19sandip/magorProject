@@ -13,7 +13,8 @@ const isloggedin= (req, res, next) =>{
       next();
 }
 
-const saveredirectUrl = (req, res, next) =>{
+const saveRedirectUrl = (req, res, next) =>{
+  console.log("saving redirect url ... url from saveRedirectUrl: ", req)
   if(req.session.redirectUrl){
     res.locals.redirectUrl = req.session.redirectUrl;
   }
@@ -65,7 +66,7 @@ const  isReviewAuther = async (req, res, next) =>{
 
 module.exports = {
   isloggedin,
-  saveredirectUrl,
+  saveRedirectUrl,
   isOwner,
   isReviewAuther,
   validateListings,

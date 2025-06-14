@@ -12,8 +12,12 @@ let listSchema = new Schema({
     type: String,
   },
   image: {
-      url : String,
-      fileName : String
+      url : {
+        type:String,
+        default:"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1750&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+      fileName : String,
+      
   },
   price: {
     type: Number,

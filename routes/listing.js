@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router();
+const  router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
 const { isloggedin, isOwner,validateListings} = require("../middleware.js");
 const listingController = require("../controllers/listing.js");
@@ -13,19 +13,25 @@ const upload = multer({storage})
 
 router
 .route("/")
-.get(wrapAsync(listingController.index))
+.get(wrapAsync(listingController.showAllListing))
+
+
+
+//add new listing route
+router.route("/listings/addnew")
+.get(isloggedin, listingController.addnewListingForm)
 .post(
   upload.single("listing[image]"),
   validateListings,
   wrapAsync(listingController.newListing)
 );
 
+router.route("/search").get(
+  wrapAsync(listingController.searchListings)
+);
 
-//add new root
-router.get("/addnew", isloggedin, listingController.addnewListingForm);
 
-
-router.route("/:id")
+router.route("/listings/:id")
 .delete(isloggedin,isOwner,wrapAsync(listingController.deleteListing)
 ).get(
   wrapAsync(listingController.showOneListing)
@@ -38,7 +44,7 @@ router.route("/:id")
 );
 // edit route
 router.get(
-  "/:id/edit",
+  "/listing/:id/edit",
   isloggedin,
   isOwner,
   wrapAsync(listingController.editListing)

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const passport = require("passport");
-const { saveredirectUrl } = require("../middleware.js");
+const { saveRedirectUrl } = require("../middleware.js");
 const userController = require("../controllers/user.js");
 
 router.route("/signup")
@@ -12,7 +12,7 @@ router.route("/signup")
 router.route("/login")
 .get( userController.loginForm)
 .post(
-     saveredirectUrl,
+     saveRedirectUrl,
      passport.authenticate("local", {failureRedirect : "/user/login", failureFlash : true}) , userController.loginUser);
 
 //logout route

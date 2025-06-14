@@ -3,8 +3,9 @@ const List = require("../models/listing.js");
 
 const postReview = async (req, res) => {
     let { id } = req.params;
+    let {review} = req.body;
     let listing = await List.findById(id);
-    let newReview = new Review(req.body.review);
+    let newReview = new Review(review);
     newReview.author = req.user._id;
     listing.reviewList.push(newReview);
     await newReview.save();

@@ -1,8 +1,12 @@
 const User = require("../models/user.js");
 
+
+//not understand its work
 const signupForm = (req, res) =>{
     res.render("./users/user.ejs");
    };
+
+
 
    const signupUser = async (req, res)=>{
     try{
@@ -14,7 +18,7 @@ const signupForm = (req, res) =>{
             return next(err);
         }
         req.flash("success", "Welcome to WanderLust!");
-    res.redirect("/listings");
+    res.redirect("/");
     })
     } catch(e){
         req.flash("error", `${e}`)
@@ -22,14 +26,16 @@ const signupForm = (req, res) =>{
     } 
 }
 
+
+
+
 const loginForm = (req, res) =>{
     res.render("./users/login.ejs")
 }
 
 const loginUser = (req, res) =>{
-
     req.flash("success", "Welcome on WanderLust! You are Loggedin");
-    let url = res.locals.redirectUrl|| "/listings";
+    let url = res.locals.redirectUrl|| "/";
     res.redirect(url);
     }
 
@@ -40,7 +46,7 @@ const logoutUser = (req, res, next) =>{
         return next(err);
       }
       req.flash("success", "you have logged Out !")
-      res.redirect("/listings");
+      res.redirect("/");
     })
   }
    module.exports = {
