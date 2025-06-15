@@ -14,7 +14,7 @@ const isloggedin= (req, res, next) =>{
 }
 
 const saveRedirectUrl = (req, res, next) =>{
-  console.log("saving redirect url ... url from saveRedirectUrl: ", req)
+  console.log("saving redirect url ... url from saveRedirectUrl:");
   if(req.session.redirectUrl){
     res.locals.redirectUrl = req.session.redirectUrl;
   }

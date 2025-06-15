@@ -58,7 +58,8 @@ const newListing = async (req, res) => {
   
   const newListing = new Listing(req.body.listing);
   const coordinates = await getCoordinates(newListing.location);
-    const geoJson = convertToGeoJSON(coordinates);
+  console.log("coordinates from nominatim:", coordinates);
+    const geoJson =  convertToGeoJSON(coordinates);
   newListing.geometry = geoJson.geometry;
   newListing.owner = req.user._id;
   newListing.image = { url, fileName };
