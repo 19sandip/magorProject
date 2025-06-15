@@ -7,6 +7,9 @@ const getCoordinates = async (address) => {
             params: {
                 q: address,
                 format: 'json'
+            },
+            headers: {
+                'User-Agent': 'magorProject-1/1.0(sandeep307098@gmail.com)'
             }
         });
         if (response.data.length > 0) {
