@@ -1,10 +1,35 @@
   
+  <style>
+    .sidebar{
+      position: absolute;
+      top: 5rem;
+      right: .5rem;
+      width: 300px;
+      height: auto;
+      background-color: #8f9179;
+      border: 1px solid #4c77a1;
+      padding: 3rem;
+      border-radius: 15px;
+      text-align: center;
+      display: none;
+    }
+
+    .sidebar .user i{
+      font-size: 3rem;
+      color: #4a4c50c7;
+      margin-bottom: .5rem;
+    }
+
+    .sidebar .user .username{
+      font-size: 1.5rem;
+    }
+  </style>
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
     <div class="container-fluid">
+
       <a class="navbar-brand" href="/"><i class="fa-solid fa-compass"></i></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    
+
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <!-- <a class="nav-link active" aria-current="page" href="/listings">Home</a> -->
@@ -13,10 +38,38 @@
         </div>
        
         <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="/listings/addnew">Airbnb your home</a>
-         <% if(!currUser){ %>
-             <a class="nav-link active" aria-current="page" href="/user/signup"><b>signup</b></a>
-            <a class="nav-link" href="/user/login"><b>login</b> </a>
+            <a class="nav-link" href="/listings/addnew" style="font-weight: 600;">Become a host</a>
+            <button class="nav-link" style="font-weight: 600;" onclick="(() => showMessage())()"><i class="fa-solid fa-bars" id="sidebarIcon"></i></button> 
+
+
+            <div class="sidebar" id="sidebar">
+
+               <div class="user">
+               
+                <div class="username">
+                  <% if(currUser) {%>
+                    <div><i class="fa-solid fa-circle-user"></i></div>
+                    <span><%= currUser.username %></span>
+                    <%}%>
+                 </div>
+
+            </div> 
+
+              <% if(!currUser){ %>
+                
+                  
+                     <a class="nav-link active" aria-current="page" href="/user/signup" style="font-size: 1.2rem;">
+                      <span style="margin-right: 6px;"><i class="fa-solid fa-user-plus"></i></span>
+                      <b>signup</b>
+                    </a>
+                  
+                    <a class="nav-link" href="/user/login" style="font-size: 1.2rem;">
+                      <span style="margin-right: 12px;">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                      </span>
+                      <b>login</b>
+                     </a>
+                 
          <%  } %>
 
          <% if(currUser){ %> 
@@ -27,4 +80,19 @@
         </div>
       </div>
     </div>
+
+    <script>
+      const toggleBtn = document.getElementById("sidebarIcon");
+      const sidebar = document.getElementById("sidebar");
+      const showMessage = ()=> {
+        sidebar.style.display = sidebar.style.display === "block" ? "none" : "block";
+      }
+
+       // Hide sidebar if click is outside
+  document.addEventListener('click', (e) => {
+    if (!sidebar.contains(e.target) && e.target !== toggleBtn) {
+      sidebar.style.display = 'none';
+    }
+  });
+    </script>
   </nav>
