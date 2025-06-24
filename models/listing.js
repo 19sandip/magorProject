@@ -46,6 +46,10 @@ owner: {
     coordinates: {
       type: [Number],
     }
+  },
+  category:{
+    type: String,
+    default: "Apartment"
   }
 });
 

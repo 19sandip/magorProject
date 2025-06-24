@@ -1,251 +1,271 @@
 <% layout("/layouts/boilerplate.ejs") %>
-<style>
-  #filters{
-    display: flex;
-    margin-top: 20px;
-    overflow-x: auto;
-    align-items: center;
+  <style>
+    #filters {
+      display: flex;
+      margin-top: 20px;
+      overflow-x: auto;
+      align-items: center;
 
-  }
-  
-.no-scrollbar::-webkit-scrollbar { /* Chrome, Safari */
-    display: none;
-}
-  .filter{
-   margin-right: 15px;
-   text-align: center;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      /* Chrome, Safari */
+      display: none;
+    }
+
+    .filter {
+      margin-right: 15px;
+      text-align: center;
       opacity: .7;
-  }
-  .filter:hover{
-   text-decoration: underline;
-   text-underline-offset: 12px;
-   cursor: pointer;
- opacity: 1;
-  }
-  .icon .fa-solid{
-    font-size: 1.4rem;
-    margin-bottom: .7rem;
-  }
+    }
 
-  .filterText{
-   font-size: .9rem;
-   font-weight: 300;
-  }
-  .tax_info{
-    display: none;
-  }
+    .filter:hover {
+      text-decoration: underline;
+      text-underline-offset: 12px;
+      cursor: pointer;
+      opacity: 1;
+    }
 
-  .filtersAndTaxSwitch{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-     background-color: white;
-    
-  }
+    .icon .fa-solid {
+      font-size: 1.4rem;
+      margin-bottom: .7rem;
+    }
 
-  .toggle_switch{
-    border: 1px solid black;
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    width: 15rem;
-    
+    .filterText {
+      font-size: .9rem;
+      font-weight: 300;
+    }
 
-  }
+    .tax_info {
+      display: none;
+    }
 
-  .searchBar{
-    position: fixed;
-    top: 1.5rem;
-    left: 40%;
-    z-index: 99;
-    height: 5rem;
-    width: 30rem;
-    border-radius: 15px;
-    margin-right: 6rem;
-  
-  }
+    .filtersAndTaxSwitch {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 0 20px 0 20px;
+      margin: 10px 0 10px 0;
+      border-radius: 15px;
 
-  .searchBtn{
+    }
+
+    .toggle_switch {
+      border: 1px solid black;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      width: 15rem;
+
+
+    }
+
+    .searchBar {
+      position: fixed;
+      top: 1.5rem;
+      left: 40%;
+      z-index: 99;
+      height: 5rem;
+      width: 30rem;
+      border-radius: 15px;
+      margin-right: 6rem;
+
+    }
+
+    .searchBtn {
       background-color: #fe424d;
       color: #fff;
       border: 1px solid white;
       border-radius: 1.5rem;
     }
-    .searchBtn:hover{
+
+    .searchBtn:hover {
       background-color: #fe424d;
       color: #fff;
       border: 1px solid white;
     }
-    .searchIcon{
+
+    .searchIcon {
       display: inline;
       margin-right: .5rem;
     }
 
-    .searchInput{
+    .searchInput {
       border-radius: 1.5rem;
       padding: .4rem 1rem .4rem 3rem;
     }
-.card{
-  margin-bottom: 1rem;
-}
-</style>
-<body> 
-<div class="filtersAndTaxSwitch">
 
-  <div id="filters" class="collapse no-scrollbar">
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-fire"></i>
-    </div>
-    <p class="filterText">Trending</p>
-  </div>
+    .card {
+      margin-bottom: 1rem;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-bed"></i>
-    </div>
-    <p class="filterText">Rooms</p>
-  </div>
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-fire"></i>
-    </div>
-    <p class="filterText">Trending</p>
-  </div>
+  <body>
+    <div class="filtersAndTaxSwitch">
 
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-bed"></i>
-    </div>
-    <p class="filterText">Rooms</p>
-  </div>
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-fire"></i>
-    </div>
-    <p class="filterText">Trending</p>
-  </div>
-
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-bed"></i>
-    </div>
-    <p class="filterText">Rooms</p>
-  </div>
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-fire"></i>
-    </div>
-    <p class="filterText">Trending</p>
-  </div>
-
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-bed"></i>
-    </div>
-    <p class="filterText">Rooms</p>
-  </div>
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-fire"></i>
-    </div>
-    <p class="filterText">Trending</p>
-  </div>
-
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-bed"></i>
-    </div>
-    <p class="filterText">Rooms</p>
-  </div>
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-fire"></i>
-    </div>
-    <p class="filterText">Trending</p>
-  </div>
-
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-bed"></i>
-    </div>
-    <p class="filterText">Rooms</p>
-  </div>
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-fire"></i>
-    </div>
-    <p class="filterText">Trending</p>
-  </div>
-
-  <div class="filter">
-    <div class="icon">
-      <i class="fa-solid fa-bed"></i>
-    </div>
-    <p class="filterText">Rooms</p>
-  </div>
- 
-  
-  
-
-
-</div>
-
-  <div class="toggle_switch">
-    <div class="form-check-reverse form-switch">
-      <label class="form-check-label" for="flexSwitchCheckDefault">total after taxes</label>
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-    </div>
-  </div>
-
- </div>
- 
-  <div class="searchBar ms-auto">
-            <div class="container-fluid">
-              <form class="d-flex" action="/search" method="GET">
-                <input class="form-control me-2 searchInput" type="search" placeholder="Search destination" aria-label="Search" name="search">
-                <button class="btn btn-outline-success searchBtn" type="submit"> <i class="fa-solid fa-magnifying-glass searchIcon"></i>Search</button>
-              </form>
-            </div>
+      <div id="filters" class="collapse no-scrollbar">
+        <div class="filter">
+          <div class="icon">
+            <i class="fa-solid fa-fire"></i>
+          </div>
+          <p class="filterText">Trending</p>
         </div>
 
-<div class="row row-cols-lg-4 row-cols-xl-4 row-cols-md-2 row-cols-sm-1">
-  <% if(allListings.length == 0) { %>
-    <div class="col-12 text-center" style="width: 100%; margin-top: 10rem; opacity: .8;">
-      <h2 class="text-center">No listings found</h2>
-    </div>
-  <% } %>
-
-  <% for(let list of allListings) {%>
-    <a href="/listings/<%= list._id %>" class="cards-link">
-          <div class="card listing_card" style="width: 20rem; height: 20rem;">
-            <img src="<%= list.image.url%>" class="card-img-top" alt="listing-image">
-           
-            <div class="card-body">
-              <p class="card-text">
-              <b> <%= list.title %> <br></b>
-                  &#x20B9; <%= list.price.toLocaleString('en-IN')%>/night
-                 &nbsp; <i class="tax_info">+18% GST</i>
-              </p>
-            </div>
+        <div class="filter">
+          <div class="icon">
+            <i class="fa-solid fa-bed"></i>
           </div>
-</a>
-            <% }  %> 
-</div>
+          <p class="filterText">Rooms</p>
+        </div>
+        <div class="filter">
+          <div class="icon">
+           <i class="fa-solid fa-gopuram"></i>
+          </div>
+          <p class="filterText">Temples</p>
+        </div>
 
-<script>
-  let filterSwitch = document.getElementById("flexSwitchCheckDefault");
-  let taxes_info = document.querySelectorAll(".tax_info");
-  filterSwitch.addEventListener("click", ()=>{
-   for(info of taxes_info) {
-    if(info.style.display != "inline") {
-      info.style.display = "inline";
-    } else{
-      info.style.display = "none"
-    }
-   }
-  })
-</script>
-</body>
-</html>
+        <div class="filter">
+          <div class="icon">
+            <i class="fa-solid fa-hill-rockslide"></i>
+          </div>
+          <p class="filterText">Hills</p>
+        </div>
+        <div class="filter">
+          <div class="icon">
+            <i class="fa-solid fa-house"></i>
+          </div>
+          <p class="filterText">Homes</p>
+        </div>
+
+        <div class="filter">
+          <div class="icon">
+            <i class="fa-solid fa-mountain-sun"></i>
+          </div>
+          <p class="filterText">Mountains</p>
+        </div>
+
+        <div class="filter">
+          <div class="icon">
+            <i class="fa-solid fa-wheat-awn"></i>
+          </div>
+          <p class="filterText">Farms</p>
+        </div>
+
+        <div class="filter">
+          <div class="icon">
+            <i class="fa-solid fa-person-swimming"></i>
+          </div>
+          <p class="filterText">Swimming Pools</p>
+        </div>
+        <div class="filter">
+          <div class="icon">
+            <i class="fa-solid fa-mountain-city"></i>
+          </div>
+          <p class="filterText">Mountain Cities</p>
+        </div>
+
+
+
+
+
+
+      </div>
+
+      <div class="toggle_switch">
+        <div class="form-check-reverse form-switch">
+          <label class="form-check-label" for="flexSwitchCheckDefault">total after taxes</label>
+          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="searchBar ms-auto">
+      <div class="container-fluid">
+        <form class="d-flex" action="/search" method="GET">
+          <input class="form-control me-2 searchInput" type="search" placeholder="Search destination"
+            aria-label="Search" name="search">
+          <button class="btn btn-outline-success searchBtn" type="submit"> <i
+              class="fa-solid fa-magnifying-glass searchIcon"></i>Search</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="listingContainer" class="row row-cols-lg-4 row-cols-xl-4 row-cols-md-2 row-cols-sm-1">
+      <% if(allListings.length==0) { %>
+        <div class="col-12 text-center" style="width: 100%; margin-top: 10rem; opacity: .8;">
+          <h2 class="text-center">No listings found</h2>
+        </div>
+        <% } %>
+
+          <% for(let list of allListings) {%>
+            <a href="/listings/<%= list._id %>" class="cards-link">
+              <div class="card listing_card" style="width: 20rem; height: 20rem;">
+                <img src="<%= list.image.url%>" class="card-img-top" alt="listing-image">
+
+                <div class="card-body">
+                  <p class="card-text">
+                    <b>
+                      <%= list.title %> <br>
+                    </b>
+                    &#x20B9; <%= list.price.toLocaleString('en-IN')%>/night
+                      &nbsp; <i class="tax_info">+18% GST</i>
+                  </p>
+                </div>
+              </div>
+            </a>
+            <% } %>
+    </div>
+
+    <script>
+      let filterSwitch = document.getElementById("flexSwitchCheckDefault");
+
+      let taxes_info = document.querySelectorAll(".tax_info");
+      filterSwitch.addEventListener("click", () => {
+        for (info of taxes_info) {
+          if (info.style.display != "inline") {
+            info.style.display = "inline";
+          } else {
+            info.style.display = "none"
+          }
+        }
+      })
+
+      const cards = document.getElementById("listingContainer");
+      let filters = document.getElementsByClassName("filter");
+
+      for (let filter of filters) {
+        filter.addEventListener("click", async (e) => {
+          // Get the filterText element inside the clicked filter
+          try {
+            const filterText = filter.querySelector('.filterText');
+            let searchInput = filterText.innerText;
+            console.log(searchInput);
+            const res = await axios.get("/search", {
+              params: { search: searchInput },
+              headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+              }
+            });
+            
+            if(res.data){      
+                cards.innerHTML = res.data;
+
+            }
+            
+
+          } catch (err) {
+            console.log("Error in iconsorting: ", err)
+          }
+
+
+
+        })
+      }
+    </script>
+  </body>
+
+  </html>

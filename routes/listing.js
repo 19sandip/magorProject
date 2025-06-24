@@ -44,7 +44,7 @@ router.route("/listings/:id")
 );
 // edit route
 router.get(
-  "/listing/:id/edit",
+  "/listings/:id/edit",
   isloggedin,
   isOwner,
   wrapAsync(listingController.editListing)

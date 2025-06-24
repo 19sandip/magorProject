@@ -1,4 +1,12 @@
 <% layout("/layouts/boilerplate.ejs") %>
+
+<style>
+.categories{
+    border-radius: 15px;
+    padding: 10px;
+    margin-right: 3rem;
+}
+</style>
 <body> 
     <br> 
     <div class="row">
@@ -51,10 +59,17 @@
                 Please enter your location.
               </div>
         </div>
+
+        <select class="mb-3 categories" name="listing[category]">
+            <option value="" selected disabled>select category</option>
+            <% categories.forEach(category => { %>
+                <option value="<%= category %>" ><%=category%></option>
+            <% }) %>
+            </select>
        
       
    
-        <button class="btn btn-dark add-btn">add</button>
+        <button class="btn btn-dark add-btn" style="width: auto;">Add Listing</button>
 
     </form>
     <br><br><br>

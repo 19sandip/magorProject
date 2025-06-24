@@ -1,5 +1,6 @@
 const Listing = require("../models/listing.js");
 const getCoordinates = require("../utils/geoCode.js");
+const categories = require("../utils/category.js");
 
 
 const showAllListing = async (req, res) => {
@@ -24,7 +25,7 @@ const editListing = async (req, res) => {
   }
   let originalImageUrl = list.image.url;
   originalImageUrl = originalImageUrl.replace("/upload", "/upload/h_150,w_300");
-  res.render("listings/edit.ejs", { list, originalImageUrl });
+  res.render("listings/edit.ejs", { list, originalImageUrl, categories });
 };
 
 const updateListing = async (req, res) => {
@@ -43,7 +44,7 @@ const updateListing = async (req, res) => {
 };
 
 const addnewListingForm = (req, res) => {
-  res.render("listings/new.ejs");
+  res.render("listings/new.ejs", { categories});
 };
 
 
@@ -58,7 +59,6 @@ const newListing = async (req, res) => {
   
   const newListing = new Listing(req.body.listing);
   const coordinates = await getCoordinates(newListing.location);
-  console.log("coordinates from nominatim:", coordinates);
     const geoJson =  convertToGeoJSON(coordinates);
   newListing.geometry = geoJson.geometry;
   newListing.owner = req.user._id;
@@ -82,17 +82,21 @@ const convertToGeoJSON = (nominatimData) => {
   };
 };
 
-const searchListings = async (req, res) =>{
+const searchListings = async (req, res) => {
     let listings = await Listing.find();
-const searchQuery = req.query.search|| "";
+    // Make sure your form uses method="GET" and input name="searchInput"
+    const searchInput = req.query.search || "";
+    const filteredListings = listings.filter(listing =>
+      listing.title.toLowerCase().includes(searchInput.toLowerCase()) ||
+      listing.location.toLowerCase().includes(searchInput.toLowerCase())||
+      listing.category.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    if(req.xhr){
+     return res.render("partials/partialListing.ejs", {allListings: filteredListings})
+    }
 
-  const filteredListings = listings.filter(listing =>
-    listing.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    listing.location.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  res.render('listings/index.ejs', { allListings: filteredListings });
- }
+    res.render('listings/index.ejs', { allListings: filteredListings });
+}
 
 
 const showOneListing = async (req, res) => {

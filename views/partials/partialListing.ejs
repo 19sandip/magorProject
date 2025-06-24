@@ -1,0 +1,21 @@
+
+<% if(allListings.length == 0) { %>
+  <div class="col-12 text-center" style="width: 100%; margin-top: 10rem; opacity: .8;">
+    <h2 class="text-center">No listings found</h2>
+  </div>
+<% } %>
+
+<% for(let list of allListings) { %>
+  <a href="/listings/<%= list._id %>" class="cards-link">
+    <div class="card listing_card" style="width: 20rem; height: 20rem;">
+      <img src="<%= list.image.url %>" class="card-img-top" alt="listing-image">
+      <div class="card-body">
+        <p class="card-text">
+          <b><%= list.title %> <br></b>
+          ₹ <%= list.price.toLocaleString('en-IN') %>/night
+          &nbsp; <i class="tax_info">+18% GST</i>
+        </p>
+      </div>
+    </div>
+  </a>
+<% } %>
